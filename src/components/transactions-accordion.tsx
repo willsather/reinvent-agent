@@ -2,7 +2,7 @@ import {
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "@agents/ui/components/accordion";
+} from "@/components/ui/accordion";
 
 import { dummyTransactions } from "@/lib/transaction";
 

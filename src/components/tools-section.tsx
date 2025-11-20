@@ -1,4 +1,4 @@
-import { Accordion } from "@agents/ui/components/accordion";
+import { Accordion } from "@/components/ui/accordion";
 
 import { TransactionsAccordion } from "./transactions-accordion";
 
