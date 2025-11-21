@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "dev": "vc env pull && next dev -p 3002",
+    "dev": "vc env pull && next dev",
     "build": "next build",
     "start": "next start",
     "test": "vitest run"
@@ -14,7 +14,7 @@
     "@vercel/analytics": "^1.5.0",
     "@vercel/functions": "^3.1.0",
     "@vercel/speed-insights": "^1.2.0",
-    "@vercel/toolbar": "^0.1.38",
+    "@vercel/toolbar": "^0.1.41",
     "ai": "6.0.0-beta.92",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
