@@ -8,9 +8,9 @@ export async function POST(_request: NextRequest) {
     const run = await start(transactionAgentWorkflow, []);
 
     // wait for the workflow to complete
-    const anomalyResults = await run.returnValue;
+    const anomalies = await run.returnValue;
 
-    return NextResponse.json(anomalyResults);
+    return NextResponse.json(anomalies);
   } catch (error) {
     console.error("Error in anomaly detection:", error);
 
