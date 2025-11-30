@@ -2,10 +2,10 @@
 
 import { Fragment, useState } from "react";
 
-import type { Transaction } from "@/lib/db";
 import type { AnomalyResult } from "@/lib/anomaly";
+import type { Transaction } from "@/lib/db";
 
-export function TransactionDisplay({
+export function TransactionList({
   transactions,
 }: {
   transactions: Transaction[];
