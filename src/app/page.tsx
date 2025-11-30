@@ -1,4 +1,4 @@
-import { TransactionList } from "@/components/transaction-display";
+import { TransactionList } from "@/components/transaction-list";
 import { db } from "@/lib/db";
 
 export default async function TransactionPage() {
