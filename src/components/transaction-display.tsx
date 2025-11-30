@@ -2,7 +2,8 @@
 
 import { Fragment, useState } from "react";
 
-import type { AnomalyResult, Transaction } from "@/lib/db";
+import type { Transaction } from "@/lib/db";
+import type { AnomalyResult } from "@/lib/anomaly";
 
 export function TransactionDisplay({
   transactions,
