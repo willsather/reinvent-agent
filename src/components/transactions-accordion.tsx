@@ -3,7 +3,6 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-
 import { db } from "@/lib/db";
 
 export async function TransactionsAccordion() {

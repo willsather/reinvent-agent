@@ -1,6 +1,7 @@
 import { Output, ToolLoopAgent } from "ai";
-import { getTransactionsTool } from "@/lib/tools";
+
 import { anomalyResultSchema } from "@/lib/db";
+import { getTransactionsTool } from "@/lib/tools";
 
 export const anomalyAgent = new ToolLoopAgent({
   model: "openai/gpt-5-nano",
