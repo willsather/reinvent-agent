@@ -1,7 +1,7 @@
 import { Output, ToolLoopAgent } from "ai";
 
 import { getTransactionsTool } from "@/lib/tools";
-import { anomalyResultSchema } from "@/lib/transaction";
+import { anomalyResultSchema } from "@/lib/db";
 
 export async function transactionAgentWorkflow() {
   "use workflow";

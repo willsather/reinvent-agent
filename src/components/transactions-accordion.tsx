@@ -4,9 +4,10 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 
-import { dummyTransactions } from "@/lib/transaction";
+import { db } from "@/lib/db";
 
-export function TransactionsAccordion() {
+export async function TransactionsAccordion() {
+  const transactions = await db.transactions.get();
   const formatCurrency = (amount: number) => {
     const isNegative = amount < 0;
     const absoluteAmount = Math.abs(amount);
@@ -49,7 +50,7 @@ export function TransactionsAccordion() {
                   </tr>
                 </thead>
                 <tbody>
-                  {dummyTransactions.slice(0, 5).map((transaction) => (
+                  {transactions.slice(0, 5).map((transaction) => (
                     <tr
                       key={transaction.id}
                       className="border-white/5 border-b"
@@ -81,7 +82,7 @@ export function TransactionsAccordion() {
                       colSpan={4}
                       className="px-2 py-1 text-center text-gray-500"
                     >
-                      ... and {dummyTransactions.length - 5} more transactions
+                      ... and {transactions.length - 5} more transactions
                     </td>
                   </tr>
                 </tbody>

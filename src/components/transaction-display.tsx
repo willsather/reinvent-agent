@@ -1,12 +1,14 @@
 "use client";
 
-import React, { useState } from "react";
+import { Fragment, useState } from "react";
 
-import type { AnomalyResult, Transaction } from "@/lib/transaction";
-import { dummyTransactions } from "@/lib/transaction";
+import type { AnomalyResult, Transaction } from "@/lib/db";
 
-export function TransactionDisplay() {
-  const [transactions] = useState<Transaction[]>(dummyTransactions);
+export function TransactionDisplay({
+  transactions,
+}: {
+  transactions: Transaction[];
+}) {
   const [anomalies, setAnomalies] = useState<AnomalyResult | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -149,7 +151,7 @@ export function TransactionDisplay() {
                 const isExpanded = expandedRow === transaction.id;
 
                 return (
-                  <React.Fragment key={transaction.id}>
+                  <Fragment key={transaction.id}>
                     <tr
                       className={`border-white/5 border-b transition-colors ${
                         isAnomalous
@@ -220,7 +222,7 @@ export function TransactionDisplay() {
                         </td>
                       </tr>
                     )}
-                  </React.Fragment>
+                  </Fragment>
                 );
               })}
             </tbody>

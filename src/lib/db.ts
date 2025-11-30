@@ -23,7 +23,7 @@ export const anomalyResultSchema = z.object({
 
 export type AnomalyResult = z.infer<typeof anomalyResultSchema>;
 
-export const dummyTransactions: Transaction[] = [
+const transactionData: Transaction[] = [
   {
     id: "txn_001",
     amount: -45.23,
@@ -109,3 +109,11 @@ export const dummyTransactions: Transaction[] = [
     date: "2024-10-16",
   },
 ];
+
+export const db = {
+  transactions: {
+    get: async (): Promise<Transaction[]> => {
+      return transactionData;
+    },
+  },
+};
