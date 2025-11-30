@@ -3,15 +3,11 @@ import { z } from "zod";
 
 import { db } from "@/lib/db";
 
-export const getTransactionsTool = tool({
-  description:
-    "Get a list of financial transactions for anomaly detection analysis",
+export const transactionsTool = tool({
+  description: "Get all transactions",
   inputSchema: z.object({}),
   execute: async () => {
-    const transactions = await db.transactions.get();
-    return {
-      transactions,
-      message: `Retrieved ${transactions.length} transactions for analysis`,
-    };
+    console.log("[DB] Getting transactions...");
+    return db.transactions.get();
   },
 });

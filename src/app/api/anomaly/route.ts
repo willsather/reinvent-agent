@@ -1,9 +1,9 @@
-import { type NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 import { start } from "workflow/api";
 
 import { transactionAgentWorkflow } from "@/workflows/transaction-agent";
 
-export async function POST(_request: NextRequest) {
+export async function POST() {
   try {
     const run = await start(transactionAgentWorkflow, []);
 

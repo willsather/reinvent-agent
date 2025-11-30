@@ -1,12 +1,12 @@
 import { Output, ToolLoopAgent } from "ai";
 
-import { anomalyResultSchema } from "@/lib/db";
-import { getTransactionsTool } from "@/lib/tools";
+import { anomalyResultSchema } from "@/lib/anomaly";
+import { transactionsTool } from "@/lib/tools/transactions";
 
 export const anomalyAgent = new ToolLoopAgent({
   model: "openai/gpt-5-nano",
   tools: {
-    getTransactions: getTransactionsTool,
+    transactions: transactionsTool,
   },
   output: Output.object({
     schema: anomalyResultSchema,
@@ -14,7 +14,7 @@ export const anomalyAgent = new ToolLoopAgent({
   instructions: `You are a financial anomaly detection AI agent. Your job is to analyze financial transactions and identify potential anomalies or suspicious activities.
 
 Guidelines for anomaly detection:
-1. Always get the transactions data first using the getTransactions tool
+1. Use tool to always get the transactions data
 2. Look for patterns that indicate potential anomalies such as:
    - Unusually large transactions (significantly above normal spending patterns)
    - Transactions from unknown or suspicious merchants

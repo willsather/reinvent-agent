@@ -11,18 +11,6 @@ export const transactionSchema = z.object({
 
 export type Transaction = z.infer<typeof transactionSchema>;
 
-export const anomalyResultSchema = z.object({
-  anomalies: z.array(
-    z.object({
-      transactionId: z.string(),
-      description: z.string(),
-    }),
-  ),
-  summary: z.string(),
-});
-
-export type AnomalyResult = z.infer<typeof anomalyResultSchema>;
-
 const transactionData: Transaction[] = [
   {
     id: "txn_001",
@@ -84,7 +72,7 @@ const transactionData: Transaction[] = [
     id: "txn_009",
     amount: -8500.0,
     name: "Unknown Merchant",
-    description: "ATM withdrawal - unusual location",
+    description: "ATM withdrawal",
     date: "2024-10-18",
   },
   {
@@ -107,6 +95,62 @@ const transactionData: Transaction[] = [
     name: "Online Casino",
     description: "Gambling transaction",
     date: "2024-10-16",
+  },
+  {
+    id: "txn_013",
+    amount: -42.75,
+    name: "Walgreens",
+    description: "Pharmacy - prescription refill",
+    date: "2024-10-14",
+  },
+  {
+    id: "txn_014",
+    amount: -67.5,
+    name: "Chipotle",
+    description: "Dinner for two",
+    date: "2024-10-13",
+  },
+  {
+    id: "txn_015",
+    amount: -125.0,
+    name: "Electric Company",
+    description: "Monthly electric bill",
+    date: "2024-10-05",
+  },
+  {
+    id: "txn_016",
+    amount: -79.99,
+    name: "Comcast",
+    description: "Internet service",
+    date: "2024-10-08",
+  },
+  {
+    id: "txn_017",
+    amount: -134.26,
+    name: "Target",
+    description: "Clothing and home goods",
+    date: "2024-10-12",
+  },
+  {
+    id: "txn_018",
+    amount: -2.75,
+    name: "Metro Transit",
+    description: "Bus fare",
+    date: "2024-10-11",
+  },
+  {
+    id: "txn_019",
+    amount: -49.99,
+    name: "Planet Fitness",
+    description: "Monthly gym membership",
+    date: "2024-10-03",
+  },
+  {
+    id: "txn_020",
+    amount: -23.5,
+    name: "Panera Bread",
+    description: "Lunch",
+    date: "2024-10-09",
   },
 ];
 
