@@ -1,6 +1,6 @@
 import { anomalyAgent } from "@/lib/agents/anomaly-agent";
 
-export async function transactionAgentWorkflow() {
+export async function agentWorkflow() {
   "use workflow";
 
   return await agentStep();

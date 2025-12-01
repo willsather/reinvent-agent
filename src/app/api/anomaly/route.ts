@@ -1,11 +1,11 @@
 import { NextResponse } from "next/server";
 import { start } from "workflow/api";
 
-import { transactionAgentWorkflow } from "@/workflows/transaction-agent";
+import { agentWorkflow } from "@/workflows/agent-workflow";
 
 export async function POST() {
   try {
-    const run = await start(transactionAgentWorkflow, []);
+    const run = await start(agentWorkflow, []);
 
     // wait for the workflow to complete
     const anomalies = await run.returnValue;
