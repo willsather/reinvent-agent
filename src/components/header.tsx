@@ -2,13 +2,13 @@ export function Header() {
   return (
     <div className="mb-16 text-center">
       <h1 className="mb-4 font-bold font-mono text-5xl tracking-tight">
-        Transaction Agent
+        Transactions
       </h1>
       <p className="text-gray-400 text-lg">
         AI-powered financial transaction anomaly detection
       </p>
       <a
-        href="https://github.com/willsather/agent-starter"
+        href="https://github.com/willsather/reinvent-agent"
         target="_blank"
         rel="noopener noreferrer"
         className="mt-3 inline-flex items-center gap-2 text-gray-500 text-sm transition-colors hover:text-gray-300"
