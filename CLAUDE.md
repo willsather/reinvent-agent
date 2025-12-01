@@ -84,7 +84,7 @@ This is a Next.js app using **Vercel Workflow** (`workflow` package) for durable
   import { transactionsTool } from "@/lib/tools/transactions";
 
   export const anomalyAgent = new ToolLoopAgent({
-    model: "openai/gpt-5-nano",
+    model: "bedrock/claude-haiku-4.5",
     tools: {
       transactions: transactionsTool,
     },
@@ -117,7 +117,7 @@ Analyze all transactions and provide a detailed assessment of any anomalies foun
 
 **Model Selection via Vercel AI Gateway** (see https://vercel.com/docs/ai-gateway):
 - **ALWAYS use string model identifiers**, never provider-specific SDKs
-- Pattern: `"provider/model-name"` (e.g., `"openai/gpt-5-nano"`, `"anthropic/claude-sonnet-4"`)
+- Pattern: `"provider/model-name"` (e.g., `"bedrock/claude-haiku-4.5"`)
 - **NEVER import** `@ai-sdk/openai`, `@ai-sdk/anthropic`, or other provider packages
 - Authentication via `VERCEL_OIDC_TOKEN` environment variable (automatically provided)
 - AI Gateway handles routing, auth, rate limiting, and observability
@@ -126,7 +126,7 @@ Analyze all transactions and provide a detailed assessment of any anomalies foun
   import { generateText } from 'ai';
 
   const { text } = await generateText({
-    model: 'anthropic/claude-sonnet-4',
+    model: "bedrock/claude-haiku-4.5",
     prompt: 'What is the capital of France?',
   });
   ```
