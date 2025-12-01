@@ -1,7 +1,3 @@
-<p align="center">
-  <img src="./public/preview.png" alt="Transaction Agent Preview" />
-</p>
-
 <a href="https://reinvent-agent.vercel.app/">
   <h1 align="center">re:Invent Demo Agent</h1>
 </a>
@@ -15,7 +11,13 @@
   <a href="https://ai-sdk.dev/"><strong>AI SDK</strong></a> ·
   <a href="https://useworkflow.dev/docs/getting-started"><strong>Workflow Development Kit</strong></a>
 </p>
+
 <br/>
+
+<p align="center">
+  <img src="./public/preview.png" alt="re:Invent Agent" />
+</p>
+
 
 ## Getting Started
 
