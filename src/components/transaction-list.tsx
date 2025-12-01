@@ -58,22 +58,22 @@ export function TransactionList({
       {/* Transaction Table */}
       <div className="mb-8 overflow-hidden rounded-lg border border-white/10 bg-white/5 backdrop-blur-sm">
         <div className="overflow-x-auto">
-          <table className="w-full">
+          <table className="w-full min-w-[900px]">
             <thead>
               <tr className="border-white/10 border-b">
-                <th className="px-6 py-4 text-left font-mono text-gray-400 text-sm uppercase tracking-wider">
+                <th className="w-[100px] px-4 py-4 text-left font-mono text-gray-400 text-sm uppercase tracking-wider">
                   ID
                 </th>
-                <th className="px-6 py-4 text-left font-mono text-gray-400 text-sm uppercase tracking-wider">
+                <th className="w-[120px] px-4 py-4 text-left font-mono text-gray-400 text-sm uppercase tracking-wider">
                   Date
                 </th>
-                <th className="px-6 py-4 text-left font-mono text-gray-400 text-sm uppercase tracking-wider">
+                <th className="w-[200px] px-4 py-4 text-left font-mono text-gray-400 text-sm uppercase tracking-wider">
                   Name
                 </th>
-                <th className="px-6 py-4 text-left font-mono text-gray-400 text-sm uppercase tracking-wider">
+                <th className="w-[300px] px-4 py-4 text-left font-mono text-gray-400 text-sm uppercase tracking-wider">
                   Description
                 </th>
-                <th className="px-6 py-4 text-right font-mono text-gray-400 text-sm uppercase tracking-wider">
+                <th className="w-[140px] px-4 py-4 text-right font-mono text-gray-400 text-sm uppercase tracking-wider">
                   Amount
                 </th>
               </tr>
@@ -94,22 +94,24 @@ export function TransactionList({
                       }`}
                       onClick={() => toggleRow(transaction.id)}
                     >
-                      <td className="px-6 py-4 font-mono text-sm text-white">
+                      <td className="overflow-hidden text-ellipsis whitespace-nowrap px-4 py-4 font-mono text-sm text-white">
                         {transaction.id}
                       </td>
-                      <td className="px-6 py-4 text-gray-300 text-sm">
+                      <td className="whitespace-nowrap px-4 py-4 text-gray-300 text-sm">
                         {formatDate(transaction.date)}
                       </td>
-                      <td className="px-6 py-4 font-medium text-white">
+                      <td className="px-4 py-4 font-medium text-white">
                         <div className="flex items-center gap-2">
-                          {transaction.name}
+                          <span className="overflow-hidden text-ellipsis whitespace-nowrap">
+                            {transaction.name}
+                          </span>
                           {isAnomalous && (
                             <>
-                              <span className="inline-flex items-center rounded-full bg-red-500/20 px-2 py-1 font-mono text-red-400 text-xs">
+                              <span className="inline-flex shrink-0 items-center rounded-full bg-red-500/20 px-2 py-1 font-mono text-red-400 text-xs">
                                 ANOMALY
                               </span>
                               <svg
-                                className={`h-4 w-4 text-red-400 transition-transform ${
+                                className={`h-4 w-4 shrink-0 text-red-400 transition-transform ${
                                   isExpanded ? "rotate-180" : ""
                                 }`}
                                 fill="none"
@@ -128,10 +130,10 @@ export function TransactionList({
                           )}
                         </div>
                       </td>
-                      <td className="px-6 py-4 text-gray-300 text-sm">
+                      <td className="overflow-hidden text-ellipsis whitespace-nowrap px-4 py-4 text-gray-300 text-sm">
                         {transaction.description}
                       </td>
-                      <td className="px-6 py-4 text-right font-medium font-mono">
+                      <td className="whitespace-nowrap px-4 py-4 text-right font-medium font-mono">
                         <span
                           className={
                             transaction.amount < 0
@@ -146,7 +148,7 @@ export function TransactionList({
 
                     {isAnomalous && isExpanded && anomalyItem && (
                       <tr className="border-red-500/30 border-b">
-                        <td colSpan={5} className="bg-red-500/10 px-6 py-4">
+                        <td colSpan={5} className="bg-red-500/10 px-4 py-4">
                           <div className="mb-2 font-mono font-semibold text-red-400 text-xs uppercase tracking-wider">
                             Anomaly Details
                           </div>

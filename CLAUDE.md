@@ -15,6 +15,13 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - **Test**: `pnpm test` (runs Vitest)
 - **Lint**: `pnpm lint` or `pnpm lint:fix` (uses Biome)
 
+## Deployment
+
+This project is deployed on **Vercel**. Use the Vercel CLI to deploy:
+
+- **Preview deployment**: `vercel deploy` (creates a preview URL)
+- **Production deployment**: `vercel deploy --prod` (deploys to production)
+
 ## Architecture
 
 ### AI Workflow System
