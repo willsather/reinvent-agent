@@ -1,11 +1,28 @@
-# Transactions Starter
+<p align="center">
+  <img src="./public/preview.png" alt="Transaction Agent Preview" />
+</p>
+
+<a href="https://reinvent-agent.vercel.app/">
+  <h1 align="center">re:Invent Demo Agent</h1>
+</a>
+
+<p align="center">
+    re:Invent Agent is an open-source example ToolLoopAgent built with Next.js and AI SDK.
+</p>
+
+<p align="center">
+  <a href="#getting-started"><strong>Get Started</strong></a> ·
+  <a href="https://ai-sdk.dev/"><strong>AI SDK</strong></a> ·
+  <a href="https://useworkflow.dev/docs/getting-started"><strong>Workflow Development Kit</strong></a>
+</p>
+<br/>
 
 ## Getting Started
 
 ### Development mode
 ```bash
 pnpm install
-pnpm run dev
+pnpm dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
@@ -16,8 +33,8 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 ```bash
 pnpm install
-pnpm run build
-pnpm run start
+pnpm build
+pnpm start
 ```
 
 Your app should be up and running on [http://localhost:3000](http://localhost:3000)!
