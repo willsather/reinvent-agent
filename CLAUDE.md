@@ -28,35 +28,46 @@ This is a Next.js app using **Vercel Workflow** (`workflow` package) for durable
 - Access return values with `await run.returnValue`
 - Example workflow definition:
   ```typescript
-  // Workflow function (orchestrates the steps)
-  export async function greetingWorkflow(name: string) {
+  import { anomalyAgent } from "@/lib/agents/anomaly-agent";
+
+  export async function transactionAgentWorkflow() {
     "use workflow";
-    const message = await greet(name);
-    return { message };
+
+    return await agentStep();
   }
 
-  // Step function (does the actual work)
-  async function greet(name: string) {
+  async function agentStep() {
     "use step";
-    // Access Node.js APIs
-    const message = `Hello ${name} at ${new Date().toISOString()}`;
-    console.log(message);
-    return message;
+
+    const { output } = await anomalyAgent.generate({
+      prompt: `Please analyze my financial transactions and detect any anomalies or suspicious activities. Get the transactions data first, then provide structured results with anomalies and summary.`,
+    });
+
+    return output;
   }
   ```
 - Example starting a workflow in API route:
   ```typescript
-  import { start } from 'workflow/api';
-  import { greetingWorkflow } from './workflows/greeting-workflow';
+  import { NextResponse } from "next/server";
+  import { start } from "workflow/api";
+  import { transactionAgentWorkflow } from "@/workflows/transaction-agent";
 
-  export async function POST(request: Request) {
-    const { email } = await request.json();
-    // Start the workflow
-    const run = await start(greetingWorkflow, [email]);
-    return Response.json({
-      message: 'Workflow started',
-      runId: run.runId
-    });
+  export async function POST() {
+    try {
+      const run = await start(transactionAgentWorkflow, []);
+
+      // wait for the workflow to complete
+      const anomalies = await run.returnValue;
+
+      return NextResponse.json(anomalies);
+    } catch (error) {
+      console.error("Error in anomaly detection:", error);
+
+      return NextResponse.json(
+        { error: "Failed to detect anomalies" },
+        { status: 500 },
+      );
+    }
   }
   ```
 
@@ -87,6 +98,21 @@ This is a Next.js app using **Vercel Workflow** (`workflow` package) for durable
 - Tools defined using `tool()` from `ai` with `description`, `inputSchema`, `execute`
 - Tools in `/lib/tools/` are imported into agents
 - Tool execute functions can be async and call the database layer
+- Example tool definition:
+  ```typescript
+  import { tool } from "ai";
+  import { z } from "zod";
+  import { db } from "@/lib/db";
+
+  export const transactionsTool = tool({
+    description: "Get all transactions",
+    inputSchema: z.object({}),
+    execute: async () => {
+      console.log("[DB] Getting transactions...");
+      return db.transactions.get();
+    },
+  });
+  ```
 
 ### Data Layer
 
@@ -117,7 +143,7 @@ This is a Next.js app using **Vercel Workflow** (`workflow` package) for durable
 ## Key Files
 
 - `/src/workflows/transaction-agent.ts` - Main workflow definition
-- `/src/lib/agents/anomal-agent.ts` - Agent configuration with tools and instructions
+- `/src/lib/agents/anomaly-agent.ts` - Agent configuration with tools and instructions
 - `/src/lib/db.ts` - Database interface and transaction data
 - `/src/lib/tools/transactions.ts` - Tool definitions for agents
 - `/src/lib/anomaly.ts` - Anomaly result schema

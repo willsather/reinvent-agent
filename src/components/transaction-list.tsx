@@ -4,6 +4,7 @@ import { Fragment, useState } from "react";
 
 import type { AnomalyResult } from "@/lib/anomaly";
 import type { Transaction } from "@/lib/db";
+import { DetectButton } from "@/components/detect-button";
 
 export function TransactionList({
   transactions,
@@ -11,31 +12,10 @@ export function TransactionList({
   transactions: Transaction[];
 }) {
   const [anomalies, setAnomalies] = useState<AnomalyResult | null>(null);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
   const [expandedRow, setExpandedRow] = useState<string | null>(null);
 
-  const detectAnomalies = async () => {
-    setLoading(true);
-    setError(null);
-    setAnomalies(null);
-
-    try {
-      const response = await fetch("/api/anomaly", {
-        method: "POST",
-      });
-
-      if (!response.ok) {
-        throw new Error("Failed to detect anomalies");
-      }
-
-      const data = await response.json();
-      setAnomalies(data);
-    } catch (err) {
-      setError(err instanceof Error ? err.message : "Something went wrong");
-    } finally {
-      setLoading(false);
-    }
+  const handleDetect = (result: AnomalyResult) => {
+    setAnomalies(result);
   };
 
   const formatCurrency = (amount: number) => {
@@ -103,24 +83,7 @@ export function TransactionList({
         </a>
       </div>
 
-      {/* CTA Button */}
-      <div className="mb-12 flex justify-center">
-        <button
-          type="button"
-          onClick={detectAnomalies}
-          disabled={loading}
-          className="rounded-lg border border-white/20 bg-white/5 px-8 py-4 font-medium font-mono text-lg text-white backdrop-blur-sm transition-all hover:bg-white/10 disabled:cursor-not-allowed disabled:opacity-50"
-        >
-          {loading ? "Detecting anomalies..." : "Detect Anomalies"}
-        </button>
-      </div>
-
-      {/* Error Message */}
-      {error && (
-        <div className="mb-8 rounded-lg border border-red-500/20 bg-red-500/10 p-4 text-center text-red-400">
-          {error}
-        </div>
-      )}
+      <DetectButton onDetect={handleDetect} />
 
       {/* Transaction Table */}
       <div className="mb-8 overflow-hidden rounded-lg border border-white/10 bg-white/5 backdrop-blur-sm">

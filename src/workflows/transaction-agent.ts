@@ -1,4 +1,4 @@
-import { anomalyAgent } from "@/lib/agents/anomal-agent";
+import { anomalyAgent } from "@/lib/agents/anomaly-agent";
 
 export async function transactionAgentWorkflow() {
   "use workflow";
