@@ -4,7 +4,7 @@ import { anomalyResultSchema } from "@/lib/anomaly";
 import { transactionsTool } from "@/lib/tools/transactions";
 
 export const anomalyAgent = new ToolLoopAgent({
-  model: "openai/gpt-5-nano",
+  model: "bedrock/claude-haiku-4.5",
   tools: {
     transactions: transactionsTool,
   },
