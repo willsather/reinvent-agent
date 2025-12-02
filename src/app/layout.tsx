@@ -10,7 +10,7 @@ import "@/app/tailwind.css";
 import { cn } from "@/lib/utils";
 
 export const metadata: Metadata = {
-  title: "Transaction Agent",
+  title: "re:Invent Agent",
   description: "Basic Next.js Template to quickly build AI Agents",
   icons: [{ rel: "icon", url: "/favicon.svg", type: "image/svg+xml" }],
 };
