@@ -4,7 +4,6 @@ import { Fragment, useState } from "react";
 
 import type { AnomalyResult } from "@/lib/anomaly";
 import type { Transaction } from "@/lib/db";
-import { DetectButton } from "@/components/detect-button";
 
 export function TransactionList({
   transactions,
@@ -53,8 +52,6 @@ export function TransactionList({
 
   return (
     <>
-      <DetectButton onDetect={handleDetect} />
-
       {/* Transaction Table */}
       <div className="mb-8 overflow-hidden rounded-lg border border-white/10 bg-white/5 backdrop-blur-sm">
         <div className="overflow-x-auto">
